@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="menu">
+        <item>Archive</item>
+        <item>Delete</item>
+        <item>Send</item>
+    </array>
+    <array name= "Archive">
+        <item>Delete</item>
+        <item>Send</item>
+    </array>
+</resources>
