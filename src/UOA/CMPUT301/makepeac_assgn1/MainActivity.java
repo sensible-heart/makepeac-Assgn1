@@ -2,7 +2,6 @@ package UOA.CMPUT301.makepeac_assgn1;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,11 +11,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	
@@ -97,10 +96,16 @@ public class MainActivity extends Activity {
     	  CurrentToDos.remove(info.position);
       }
       if (menuItemIndex == 2){
+    	  try{
     	  	Intent intent = new Intent(Intent.ACTION_SEND);//creates a new intent used to send the item
     	  	intent.setType("message/rfc822");//allows the user to select any email app they have installed
   			intent.putExtra(Intent.EXTRA_TEXT, "This is your current to do: " + CurrentToDos.get(info.position).GetName());//makes sure the slected to do is included in the subject text
   			startActivity(intent);//initializes the email activity
+    	  } catch (android.content.ActivityNotFoundException ex){//incase no email clients installed
+    		  Toast toast = Toast.makeText(this,"No email installed.",Toast.LENGTH_SHORT);
+      		  toast.show();
+    	  }
+    
       }
       FileUpdater.saveInFile(CurrentToDos, this);
       adapter.notifyDataSetChanged();

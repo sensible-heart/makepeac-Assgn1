@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class ArchiveActivity extends Activity {
 	
@@ -63,10 +64,15 @@ public class ArchiveActivity extends Activity {
     	  ArchiveToDos.remove(info.position);//removes item from ArchiveToDos based on the selected item from the listview
       }
       if (menuItemIndex == 1){
-    	  	Intent intent = new Intent(Intent.ACTION_SEND);//creates a new intent used to send the item
-	  	  	intent.setType("message/rfc822");//allows the user to select any email app they have installed
+    	  try{
+      	  	Intent intent = new Intent(Intent.ACTION_SEND);//creates a new intent used to send the item
+      	  	intent.setType("message/rfc822");//allows the user to select any email app they have installed
 			intent.putExtra(Intent.EXTRA_TEXT, "This is your current to do: " + ArchiveToDos.get(info.position).GetName());//makes sure the slected to do is included in the subject text
 			startActivity(intent);//initializes the email activity
+      	  } catch (android.content.ActivityNotFoundException ex){//incase no email clients installed
+      		  Toast toast = Toast.makeText(this,"No email installed.",Toast.LENGTH_SHORT);
+      		  toast.show();
+      	  }
       }
       FileUpdater.saveInFile2(ArchiveToDos, this);//updates the current list of ArchiveToDos
       adapter.notifyDataSetChanged();//makes sure the adapter changes accordingly
