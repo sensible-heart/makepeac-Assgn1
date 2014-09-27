@@ -12,6 +12,7 @@ read INSTALL
 
 read INSTRUCTIONS
 All instructions assume the app is open and running on your device or emulator.
+FULLY IMPLEMENTED:
 	To Add a ToDo Item:
 		1. Select the text box that says “Enter your to do here”
 		2. Type your to do in the box
@@ -44,6 +45,29 @@ All instructions assume the app is open and running on your device or emulator.
 		3. Click on that item, holding your finger there until a menu appears
 		4. Select delete from that menu
 		5. Observe the item disappear from your Archive without a trace 
+	Email a Current to do item:
+		1. Select an existing to do list item that you would like to email
+		2. Long click on that item until a menu pops up
+		3. Select the send button
+		4. Select the email application you would like to use to send your item
+		5. Compose an email around the default line
+		6. Send your email
+		NOTE: You must have a functional email application installed in order to
+		use this email functionality.
+	Email an archive to do item:
+		1. Select an existing archive item that you would like to send
+		2. Long click on that item until a menu pops up
+		3. Select the send button
+		4. Select the email application you would like to use to send your item
+		5. Compose an email around the default line
+		6. Send your email
+		NOTE: You must have a functional email application installed in order to
+		use this email functionality.
+PARTIALLY IMPLEMENTED:
+	Counting checked to do items:
+		The script checks for items in my CurrentToDos list that have their 			internal checked state set to checked. But there is a problem with saving 		items as checked and as a result you may not see something visually 			checked anymore it is still counted.
+ANY OTHER FEATURES CAN BE ASSUMED TO NOT BE IMPLEMENTED.
+	
 
 read COLLABORATORS
 Wyatt Fleming
